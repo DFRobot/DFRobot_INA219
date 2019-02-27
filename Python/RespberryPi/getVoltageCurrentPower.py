@@ -11,10 +11,10 @@ _I2C_ADDRESS 2  0x41   A0 = 1  A1 = 0
 _I2C_ADDRESS 3  0x44   A0 = 0  A1 = 1
 _I2C_ADDRESS 4  0x45   A0 = 1  A1 = 1
 
-Copyright    [DFRobot](http://www.dfrobot.com), 2018
+Copyright    [DFRobot](http://www.dfrobot.com), 2016
 Copyright    GNU Lesser General Public License
 version  V1.0
-date  2018-12-11
+date  2019-2-27
 '''
 
 import time

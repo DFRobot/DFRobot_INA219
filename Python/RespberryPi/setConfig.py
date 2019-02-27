@@ -12,20 +12,24 @@ _I2C_ADDRESS 2  0x41   A0 = 1  A1 = 0
 _I2C_ADDRESS 3  0x44   A0 = 0  A1 = 1
 _I2C_ADDRESS 4  0x45   A0 = 1  A1 = 1
 
-eIna219BusVolRange_t = bus_vol_range_16V
+set_bus_RNG
+value                = bus_vol_range_16V
                        bus_vol_range_32V
                        
-eIna219PGABits_t     = PGA_bits_1
+set_PGA
+bits                 = PGA_bits_1
                        PGA_bits_2
                        PGA_bits_4
                        PGA_bits_8
                        
-eIna219AdcBits_t     = adc_bits_9
+set_bus_ADC
+set_shunt_ADC
+bits                 = adc_bits_9
                        adc_bits_10
                        adc_bits_11
                        adc_bits_12
                        
-eIna219AdcSample_t   = adc_sample_1
+sample               = adc_sample_1
                        adc_sample_2
                        adc_sample_4
                        adc_sample_8
@@ -33,8 +37,8 @@ eIna219AdcSample_t   = adc_sample_1
                        adc_sample_32
                        adc_sample_64
                        adc_sample_128
-                       
-eInaMode             = power_dow
+set_mode
+mode                 = power_dow
                        shunt_vol_trig
                        bus_vol_trig
                        shunt_and_bus_vol_trig
@@ -43,10 +47,10 @@ eInaMode             = power_dow
                        bus_vol_con
                        shunt_and_bus_vol_con
                        
-Copyright    [DFRobot](http://www.dfrobot.com), 2018
+Copyright    [DFRobot](http://www.dfrobot.com), 2016
 Copyright    GNU Lesser General Public License
 version  V1.0
-date  2018-12-11
+date  2019-2-27
 '''
 
 import time

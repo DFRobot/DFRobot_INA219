@@ -8,11 +8,42 @@
    INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
    INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1
    INA219_I2C_ADDRESS4  0x45   A0 = 1  A1 = 1
-  
-   Copyright    [DFRobot](http://www.dfrobot.com), 2018
+   
+   eIna219BusVolRange_t         = eIna219BusVolRange_16V
+                                  eIna219BusVolRange_32V
+   
+   eIna219BusVolRange_t         = eIna219PGABits_1
+                                  eIna219PGABits_2
+                                  eIna219PGABits_4
+                                  eIna219PGABits_8
+
+   eIna219BusVolRange_t         = eIna219AdcBits_9
+                                  eIna219AdcBits_10
+                                  eIna219AdcBits_11
+                                  eIna219AdcBits_12
+   
+   eIna219BusVolRange_t         = eIna219AdcSample_1
+                                  eIna219AdcSample_2
+                                  eIna219AdcSample_4
+                                  eIna219AdcSample_8
+                                  eIna219AdcSample_16
+                                  eIna219AdcSample_32
+                                  eIna219AdcSample_64
+                                  eIna219AdcSample_128
+   
+   eIna219BusVolRange_t         = eIna219PowerDown
+                                  eIna219SVolTrig
+                                  eIna219BVolTrig
+                                  eIna219SAndBVolTrig
+                                  eIna219AdcOff
+                                  eIna219SVolCon
+                                  eIna219BVolCon
+                                  eIna219SAndBVolCon
+
+   Copyright    [DFRobot](http://www.dfrobot.com), 2016
    Copyright    GNU Lesser General Public License
    version  V0.1
-   date  2018-12-13
+   date  2019-2-27
 */
 
 #include <Wire.h>
