@@ -68,9 +68,9 @@ for linearly calibration
 
 ina.set_bus_RNG(ina.bus_vol_range_32V)
 ina.set_PGA(ina.PGA_bits_8)
-ina.set_bus_ADC(ina.adc_bits_12)
-ina.set_shunt_ADC(ina.adc_sample_8)
-ina.set_shunt_ADC(ina.shunt_and_bus_vol_con)
+ina.set_bus_ADC(ina.adc_bits_12, ina.adc_sample_8)
+ina.set_shunt_ADC(ina.adc_bits_12, ina.adc_sample_8)
+ina.set_mode(ina.shunt_and_bus_vol_con)
 
 #ina.reset()                                     #Resets all registers to default values
 

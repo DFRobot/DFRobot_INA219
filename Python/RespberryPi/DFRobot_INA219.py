@@ -11,6 +11,7 @@ class INA219:
     INA219_I2C_ADDRESS4                      = (0x45)
 
     INA219_CONFIG_RESET                      = (0x8000)
+    _INA219_REG_CONFIG                       = (0x00)
 
     bus_vol_range_16V                    = 0
     bus_vol_range_32V                    = 1
