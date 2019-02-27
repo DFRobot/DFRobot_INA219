@@ -9,10 +9,10 @@
    INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1
    INA219_I2C_ADDRESS4  0x45   A0 = 1  A1 = 1
   
-   Copyright    [DFRobot](http://www.dfrobot.com), 2018
+   Copyright    [DFRobot](http://www.dfrobot.com), 2016
    Copyright    GNU Lesser General Public License
    version  V0.1
-   date  2018-12-13
+   date  2019-2-27
 */
 
 #include <Wire.h>

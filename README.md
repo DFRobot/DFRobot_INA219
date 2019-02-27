@@ -49,13 +49,11 @@ Download the library ZIP file and unzip it to the Arduino folder of the library.
  *             INA219_I2C_ADDRESS3  0x44
  *             INA219_I2C_ADDRESS4  0x45
  */
-DFRobot_INA219(&Wire, i2cAddr);
+DFRobot_INA219_IIC(TwoWire *pWire, uint8_t i2cAddr);
 
 /* 
  * @brief ina219 begin
  *
- * @param &Wire  Set IIC adress by setting the hardware
- * 
  * @return begin return true if succeed, otherwise return false
  */
 bool begin();

@@ -67,7 +67,7 @@ def begin(self)
 
 @param ina219_reading_A can not be zero
 '''
-def linearCal(self, ina219_reading_A, extMeter_reading_A)
+def linear_cal(self, ina219_reading_A, extMeter_reading_A)
 '''
 @brief ina219 reset
 
@@ -80,14 +80,14 @@ def reset(self)
 
 @return The bus voltage converted into volts
 '''
-def getBusVoltage_V(self)
+def get_bus_voltage_V(self)
 
 ''' 
 @brief  Get the shunt voltage in mV
 
 @return The shunt voltage converted into millivolts
 '''
-def getShuntVoltage_mV(self)
+def get_shunt_voltage_mV(self)
 
 '''
  @brief  Get the current value in mA, taking into account the
@@ -95,7 +95,7 @@ def getShuntVoltage_mV(self)
 
  @return Current reading convereted into milliamps
 '''
-def getCurrent_mA(self)
+def get_current_mA(self)
 
 '''
  @brief  Get the power value in mW, taking into account the
@@ -103,7 +103,7 @@ def getCurrent_mA(self)
 
  @return Power reading converted into milliwatts
 '''
-def getPower_mW(self)
+def get_power_mW(self)
 
 '''
 @brief Bus voltage range setting
@@ -111,7 +111,7 @@ def getPower_mW(self)
 @param value : bus_vol_range_16V
                bus_vol_range_32V
 '''
-def setBRNG(self, value)
+def set_bus_RNG(self, value)
 
 '''
 @brief PGA gain and range setting
@@ -121,7 +121,7 @@ def setBRNG(self, value)
               PGA_bits_4
               PGA_bits_8
 '''
-def setPGA(self, bits)
+def set_PGA(self, bits)
 
 '''
 @brief Bus and shunt ADC resolution setting
@@ -140,8 +140,8 @@ def setPGA(self, bits)
                adc_sample_64
                adc_sample_128
 '''
-def setBADC(self, bits, sample)
-def setSADC(self, bits, sample)
+def set_bus_ADC(self, bits, sample)
+def set_shunt_ADC(self, bits, sample)
 
 '''
 @brief Operating mode setting
@@ -155,7 +155,7 @@ def setSADC(self, bits, sample)
               bus_vol_con
               shunt_and_bus_vol_con
 '''
-def setMode(self, mode)
+def set_shunt_ADC(self, mode)
 
 ```
 

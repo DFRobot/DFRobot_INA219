@@ -56,62 +56,62 @@ class INA219:
 
     def __init__(self, bus, addr):
         self.i2cbus=smbus.SMBus(bus)
-        self.i2cAddr = addr
+        self.i2c_addr = addr
 
     def begin(self):
         if not self.scan():
             return False
-            self.setBRNG(self.bus_vol_range_32V)
-            self.setPGA(self.PGA_bits_8)
-            self.setBADC(self.adc_bits_12, self.adc_sample_8)
-            self.setSADC(self.adc_bits_12, self.adc_sample_8)
-            self.setMode(self.shunt_and_bus_vol_con)
         else:
+            self.cal_value = 4096
+            self.set_bus_RNG(self.bus_vol_range_32V)
+            self.set_PGA(self.PGA_bits_8)
+            self.set_bus_ADC(self.adc_bits_12, self.adc_sample_8)
+            self.set_shunt_ADC(self.adc_bits_12, self.adc_sample_8)
+            self.set_mode(self.shunt_and_bus_vol_con)
             return True
 
-    def linearCal(self, ina219Reading_mA, extMeterReading_mA):
-        calValue = 4096
-        ina219Reading_mA = float(ina219Reading_mA)
-        extMeterReading_mA = float(extMeterReading_mA)
-        calValue = int((extMeterReading_mA / ina219Reading_mA) * calValue) & 0xFFFE
-        self._writeRegister(self._INA219_REG_CALIBRATION, calValue)
+    def linear_cal(self, ina219_reading_mA, ext_meter_reading_mA):
+        ina219_reading_mA = float(ina219_reading_mA)
+        ext_meter_reading_mA = float(ext_meter_reading_mA)
+        self.cal_value = int((ext_meter_reading_mA / ina219_reading_mA) * self.cal_value) & 0xFFFE
+        self._write_register(self._INA219_REG_CALIBRATION, self.cal_value)
 
     def reset(self):
-        self._writeRegister(self._INA219_REG_CONFIG, self._INA219_CONFIG_RESET)
+        self._write_register(self._INA219_REG_CONFIG, self._INA219_CONFIG_RESET)
 
-    def _writeRegister(self, register, value):
-        self.i2cbus.write_i2c_block_data(self.i2cAddr, register, [value >> 8, value & 0xff])
+    def _write_register(self, register, value):
+        self.i2cbus.write_i2c_block_data(self.i2c_addr, register, [value >> 8, value & 0xff])
 
-    def _readRegister(self, register):
-        return self.i2cbus.read_i2c_block_data(self.i2cAddr, register) 
+    def _read_register(self, register):
+        return self.i2cbus.read_i2c_block_data(self.i2c_addr, register) 
 
-    def getBusVoltage_V(self):
-        return float(self.readInaReg(self._INA219_REG_BUSVOLTAGE) >> 1) * 0.001
+    def get_bus_voltage_V(self):
+        return float(self.read_ina_reg(self._INA219_REG_BUSVOLTAGE) >> 1) * 0.001
 
-    def getShuntVoltage_mV(self):
-        return float(self.readInaReg(self._INA219_REG_SHUNTVOLTAGE))
+    def get_shunt_voltage_mV(self):
+        return float(self.read_ina_reg(self._INA219_REG_SHUNTVOLTAGE))
 
-    def getCurrent_mA(self):
-        return float(self.readInaReg(self._INA219_REG_CURRENT))
+    def get_current_mA(self):
+        return float(self.read_ina_reg(self._INA219_REG_CURRENT))
 
-    def getPower_mW(self):
-        return float(self.readInaReg(self._INA219_REG_POWER)) * 20
+    def get_power_mW(self):
+        return float(self.read_ina_reg(self._INA219_REG_POWER)) * 20
 
-    def setBRNG(self, value):
+    def set_bus_RNG(self, value):
         conf = 0
-        conf = self.readInaReg(self._INA219_REG_CONFIG)
+        conf = self.read_ina_reg(self._INA219_REG_CONFIG)
         conf &= ~(0x01 << 13)
         conf |= value << 13
-        self._writeRegister(self._INA219_REG_CONFIG, conf)
+        self._write_register(self._INA219_REG_CONFIG, conf)
 
-    def setPGA(self, bits):
+    def set_PGA(self, bits):
         conf = 0
-        conf = self.readInaReg(self._INA219_REG_CONFIG)
+        conf = self.read_ina_reg(self._INA219_REG_CONFIG)
         conf &= ~(0x03 << 11)
         conf |= bits << 11
-        self._writeRegister(self._INA219_REG_CONFIG, conf)
+        self._write_register(self._INA219_REG_CONFIG, conf)
     
-    def setBADC(self, bits, sample):
+    def set_bus_ADC(self, bits, sample):
         conf = 0
         value = 0
         if(bits < adc_bits_12 and sample > adc_sample_1):
@@ -120,12 +120,12 @@ class INA219:
             value = bits
         else:
             value = 0x80 | sample
-        conf = self.readInaReg(self._INA219_REG_CONFIG)
+        conf = self.read_ina_reg(self._INA219_REG_CONFIG)
         conf &= ~(0x0f << 7)
         conf |= value << 7
-        self._writeRegister(self._INA219_REG_CONFIG, conf)
+        self._write_register(self._INA219_REG_CONFIG, conf)
     
-    def setSADC(self, bits, sample):
+    def set_shunt_ADC(self, bits, sample):
         conf = 0
         value = 0
         if(bits < adc_bits_12 and sample > adc_sample_1):
@@ -134,21 +134,21 @@ class INA219:
             value = bits
         else:
             value = 0x80 | sample
-        conf = self.readInaReg(self._INA219_REG_CONFIG)
+        conf = self.read_ina_reg(self._INA219_REG_CONFIG)
         conf &= ~(0x0f << 3)
         conf |= value << 3
-        self._writeRegister(self._INA219_REG_CONFIG, conf)
+        self._write_register(self._INA219_REG_CONFIG, conf)
     
-    def setMode(self, mode):
+    def set_mode(self, mode):
         conf = 0
-        conf = self.readInaReg(self._INA219_REG_CONFIG)
+        conf = self.read_ina_reg(self._INA219_REG_CONFIG)
         conf &= ~0x07
         conf |= mode
-        self._writeRegister(self._INA219_REG_CONFIG, conf)
+        self._write_register(self._INA219_REG_CONFIG, conf)
 
-    def readInaReg(self, reg):
+    def read_ina_reg(self, reg):
         buf = []
-        buf = self._readRegister(reg)
+        buf = self._read_register(reg)
         if (buf[0] & 0x80):
             return - 0x10000 + ((buf[0] << 8) | (buf[1]))
         else:
@@ -156,7 +156,7 @@ class INA219:
 
     def scan(self):
         try:
-            self.i2cbus.read_byte(self.i2cAddr)
+            self.i2cbus.read_byte(self.i2c_addr)
             return True
         except:
             print("I2C init fail")

@@ -18,12 +18,10 @@ date  2018-12-11
 '''
 
 import time
-import sys
-sys.path.append('../')
 from DFRobot_INA219 import INA219
 
-ina219Reading_mA = 1000
-extMeterReading_mA = 1000
+ina219_reading_mA = 1000
+ext_meter_reading_mA = 1000
 
 ina = INA219(1, INA219.INA219_I2C_ADDRESS4)                                #Change I2C address by dialing DIP switch
 
@@ -35,7 +33,7 @@ Revise the following two paramters according to actula reading of the INA219 and
 for linearly calibration
 '''
 
-ina.linearCal(ina219Reading_mA, extMeterReading_mA)
+ina.linear_cal(ina219_reading_mA, ext_meter_reading_mA)
 
 
 #ina.reset()                                     #Resets all registers to default values
@@ -43,10 +41,10 @@ ina.linearCal(ina219Reading_mA, extMeterReading_mA)
 def main():
     while True:
         time.sleep(1)
-        print ("Shunt Voltage : %.2f mV" % ina.getShuntVoltage_mV())
-        print ("Bus Voltage   : %.3f V" % ina.getBusVoltage_V())
-        print ("Current       : %.f mA" % ina.getCurrent_mA())
-        print ("Power         : %.f mW" % ina.getPower_mW())
+        print ("Shunt Voltage : %.2f mV" % ina.get_shunt_voltage_mV())
+        print ("Bus Voltage   : %.3f V" % ina.get_bus_voltage_V())
+        print ("Current       : %.f mA" % ina.get_current_mA())
+        print ("Power         : %.f mW" % ina.get_power_mW())
         print (" ")
 
 if __name__ == "__main__":
