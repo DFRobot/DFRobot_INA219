@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
 '''
-file getVoltageCurrentPower.py
+file set_config.py
 SEN0291 Wattmeter Sensor
 This sensor can detect Voltage ,Current,and Power
 This demo is used to change configuration mode
 The module has four I2C, these addresses are:
 
-_I2C_ADDRESS 1  0x40   A0 = 0  A1 = 0
-_I2C_ADDRESS 2  0x41   A0 = 1  A1 = 0
-_I2C_ADDRESS 3  0x44   A0 = 0  A1 = 1
-_I2C_ADDRESS 4  0x45   A0 = 1  A1 = 1
+ADDRESS 1  0x40   A0 = 0  A1 = 0
+ADDRESS 2  0x41   A0 = 1  A1 = 0
+ADDRESS 3  0x44   A0 = 0  A1 = 1
+ADDRESS 4  0x45   A0 = 1  A1 = 1
 
 set_bus_RNG
 value                = bus_vol_range_16V
