@@ -37,6 +37,7 @@ void setup(void)
     }
     ina219.linearCalibrate(ina219Reading_mA, extMeterReading_mA);
     Serial.println();
+    ina219.reset();
 }
 
 void loop(void)

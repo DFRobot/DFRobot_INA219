@@ -49,7 +49,7 @@ Download the library ZIP file and unzip it to the Arduino folder of the library.
  *             INA219_I2C_ADDRESS3  0x44
  *             INA219_I2C_ADDRESS4  0x45
  */
-DFRobot_INA219(i2caddr);
+DFRobot_INA219(&Wire, i2cAddr);
 
 /* 
  * @brief ina219 begin
@@ -58,7 +58,7 @@ DFRobot_INA219(i2caddr);
  * 
  * @return begin return true if succeed, otherwise return false
  */
-bool begin(TwoWire *theWire);
+bool begin();
 
 /*
  * @brief calibrate the current
@@ -140,6 +140,7 @@ void setPGA(eIna219PGABits_t bits);
  *                      eIna219AdcSample_64,
  *                      eIna219AdcSample_128
  *                      } eIna219AdcSample_t;
+ * if eIna219AdcSample_t > 1, eIna219AdcBits_t must be "eIna219AdcBits_12"
  */
 void setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
 void setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
