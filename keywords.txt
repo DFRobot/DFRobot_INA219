@@ -1,0 +1,64 @@
+#######################################
+# Syntax Coloring DFRobot_INA219
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+DFRobot_INA219	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################	
+
+linearCal	KEYWORD2
+getShuntVoltage_mV	KEYWORD2
+getBusVoltage_V	KEYWORD2
+getCurrent_mA	KEYWORD2
+getPower_mW	KEYWORD2
+reset	KEYWORD2
+setBRNG	KEYWORD2
+setPGA	KEYWORD2
+setBADC	KEYWORD2
+setSADC	KEYWORD2
+setMode	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+extMeterReading_mA	LITERAL1
+ina219Reading_mA	LITERAL1
+INA219_I2C_ADDRESS1	LITERAL1
+INA219_I2C_ADDRESS2	LITERAL1
+INA219_I2C_ADDRESS3	LITERAL1
+INA219_I2C_ADDRESS4	LITERAL1
+eIna219PGABits_1	LITERAL1
+eIna219PGABits_2	LITERAL1
+eIna219PGABits_4	LITERAL1
+eIna219PGABits_8	LITERAL1
+eIna219AdcBits_9	LITERAL1
+eIna219AdcBits_10	LITERAL1
+eIna219AdcBits_11	LITERAL1
+eIna219AdcBits_12	LITERAL1
+eIna219AdcSample_1	LITERAL1
+eIna219AdcSample_2	LITERAL1
+eIna219AdcSample_4	LITERAL1
+eIna219AdcSample_8	LITERAL1
+eIna219AdcSample_16	LITERAL1
+eIna219AdcSample_32	LITERAL1
+eIna219AdcSample_64	LITERAL1
+eIna219AdcSample_128	LITERAL1
+eIna219PowerDown	LITERAL1
+eIna219SVolTrig	LITERAL1
+eIna219BVolTrig	LITERAL1
+eIna219SAndBVolTrig	LITERAL1
+eIna219AdcOff	LITERAL1
+eIna219SVolCon	LITERAL1
+eIna219BVolCon	LITERAL1
+eIna219SAndBVolCon	LITERAL1
+eIna219BusVolRange_16V	LITERAL1
+eIna219BusVolRange_32V	LITERAL1
+
+
+
+#######################################
+
+
