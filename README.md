@@ -44,10 +44,10 @@ Download the library ZIP file and unzip it to the Arduino folder of the library.
  * @brief Set IIC address by setting the hardware
  *
  * @param IIC Address setting
-        addr = INA219_I2C_ADDRESS1  0x40
-               INA219_I2C_ADDRESS2  0x41
-               INA219_I2C_ADDRESS3  0x44
-               INA219_I2C_ADDRESS4  0x45
+ *      addr = INA219_I2C_ADDRESS1  0x40
+ *             INA219_I2C_ADDRESS2  0x41
+ *             INA219_I2C_ADDRESS3  0x44
+ *             INA219_I2C_ADDRESS4  0x45
  */
 DFRobot_INA219(i2caddr);
 
@@ -106,8 +106,8 @@ float getPower_mW();
  * @brief Bus voltage range setting
  *
  * @param typedef enum {eIna219BusVolRange_16V,
-                        eIna219BusVolRange_32V
-                        } eIna219BusVolRange_t;
+ *                      eIna219BusVolRange_32V
+ *                      } eIna219BusVolRange_t;
  */
 void setBRNG(eIna219BusVolRange_t value);
 
@@ -115,10 +115,10 @@ void setBRNG(eIna219BusVolRange_t value);
  * @brief PGA gain and range setting
  *
  * @param typedef enum {eIna219PGABits_1,
-                        eIna219PGABits_2,
-                        eIna219PGABits_4,
-                        eIna219PGABits_8
-                        } eIna219PGABits_t;
+ *                      eIna219PGABits_2,
+ *                      eIna219PGABits_4,
+ *                      eIna219PGABits_8
+ *                      } eIna219PGABits_t;
  */
 void setPGA(eIna219PGABits_t bits);
 
@@ -148,14 +148,14 @@ void setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
  * @brief Operating mode setting
  *
  * @param typedef enum{eIna219PowerDown,
-                       eIna219SVolTrig,
-                       eIna219BVolTrig,
-                       eIna219SAndBVolTrig,
-                       eIna219AdcOff,
-                       eIna219SVolCon,
-                       eIna219BVolCon,
-                       eIna219SAndBVolCon
-                       } eInaMode;
+ *                     eIna219SVolTrig,
+ *                     eIna219BVolTrig,
+ *                     eIna219SAndBVolTrig,
+ *                     eIna219AdcOff,
+ *                     eIna219SVolCon,
+ *                     eIna219BVolCon,
+ *                     eIna219SAndBVolCon
+ *                     } eInaMode;
  */
 void setMode(eInaMode mode);
 
