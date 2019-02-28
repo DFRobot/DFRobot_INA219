@@ -138,7 +138,8 @@ void setPGA(eIna219PGABits_t bits);
  *                      eIna219AdcSample_64,
  *                      eIna219AdcSample_128
  *                      } eIna219AdcSample_t;
- * if eIna219AdcSample_t > 1, eIna219AdcBits_t must be "eIna219AdcBits_12"
+ *
+ * if eIna219AdcSample_t >= 1, eIna219AdcBits_t must be "eIna219AdcBits_12"
  */
 void setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
 void setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);

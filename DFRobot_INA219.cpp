@@ -49,8 +49,8 @@ float DFRobot_INA219::getPower_mW()
 {
     return (float) readInaReg(INA219_REG_POWER) * 20;
 }
-
-void DFRobot_INA219::setBRNG(eIna219BusVolRange_t value)
+/*Sets Bus Voltage Range(default value is 32V)*/
+void DFRobot_INA219::setBRNG(eIna219BusVolRange_t value)/**/
 {
     int16_t    conf;
     conf = readInaReg(INA219_REG_CONFIG);
@@ -58,8 +58,8 @@ void DFRobot_INA219::setBRNG(eIna219BusVolRange_t value)
     conf |= (uint16_t) value << 13;
     writeInaReg(INA219_REG_CONFIG, conf);
 }
-
-void DFRobot_INA219::setPGA(eIna219PGABits_t bits)
+/*Sets PGA gain and range(default value is 320mV)*/
+void DFRobot_INA219::setPGA(eIna219PGABits_t bits)//Sets PGA gain and range(default value is 320mV)
 {
     int16_t    conf;
     conf = readInaReg(INA219_REG_CONFIG);
@@ -67,7 +67,10 @@ void DFRobot_INA219::setPGA(eIna219PGABits_t bits)
     conf |= (uint16_t) bits << 11;
     writeInaReg(INA219_REG_CONFIG, conf);
 }
-
+/*
+ *These bits adjust the Bus ADC resolution (9-, 10-, 11-, or 12-bit) 
+ *or set the number of samples used when averaging results for the Bus Voltage Register
+ */
 void DFRobot_INA219::setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample)
 {
     int16_t    conf;
@@ -83,7 +86,10 @@ void DFRobot_INA219::setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample)
     conf |= (uint16_t) value << 7;
     writeInaReg(INA219_REG_CONFIG, conf);
 }
-
+/*
+ *These bits adjust the Shunt ADC resolution (9-, 10-, 11-, or 12-bit) 
+ *or set the number of samples used when averaging results for the Shunt Voltage Register
+ */
 void DFRobot_INA219::setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample)
 {
     int16_t    conf;
@@ -99,7 +105,7 @@ void DFRobot_INA219::setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample)
     conf |= (uint16_t) value << 3;
     writeInaReg(INA219_REG_CONFIG, conf);
 }
-
+/*Selects continuous, triggered, or power-down mode of operation*/
 void DFRobot_INA219::setMode(eInaMode mode)
 {
     int16_t    conf;
