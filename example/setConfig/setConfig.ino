@@ -67,6 +67,7 @@ void setup(void)
     ina219.setSADC(eIna219AdcBits_12, eIna219AdcSample_8);
     ina219.setMode(eIna219SAndBVolCon);
     Serial.println("");
+    //ina219.reset();
     
     
 }
