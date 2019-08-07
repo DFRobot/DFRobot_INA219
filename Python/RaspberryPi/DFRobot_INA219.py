@@ -115,9 +115,9 @@ class INA219:
     def set_bus_ADC(self, bits, sample):
         conf = 0
         value = 0
-        if(bits < adc_bits_12 and sample > adc_sample_1):
+        if(bits < self.adc_bits_12 and sample > adc_sample_1):
             return
-        if(bits < adc_bits_12):
+        if(bits < self.adc_bits_12):
             value = bits
         else:
             value = 0x80 | sample
@@ -129,9 +129,9 @@ class INA219:
     def set_shunt_ADC(self, bits, sample):
         conf = 0
         value = 0
-        if(bits < adc_bits_12 and sample > adc_sample_1):
+        if(bits < self.adc_bits_12 and sample > adc_sample_1):
             return
-        if(bits < adc_bits_12):
+        if(bits < self.adc_bits_12):
             value = bits
         else:
             value = 0x80 | sample
