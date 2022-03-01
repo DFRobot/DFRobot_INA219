@@ -31,16 +31,16 @@ float extMeterReading_mA = 1000;
 void setup(void) 
 {
     Serial.begin(115200);
-	//等待打开串口
+    //等待打开串口
     while(!Serial);
     
     Serial.println();
-	//初始化
+    //初始化
     while(ina219.begin() != true) {
         Serial.println("INA219 begin faild");
         delay(2000);
     }
-	//线性校准
+    //线性校准
     ina219.linearCalibrate(/*未校准测量的电流*/ina219Reading_mA, /*其它电流测量仪器测得的电流*/extMeterReading_mA);
     Serial.println();
 }

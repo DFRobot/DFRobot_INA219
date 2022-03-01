@@ -151,11 +151,11 @@ public:
      */
     float getShuntVoltage_mV();
     
-	/**
+    /**
      * @fn getCurrent_mA
      * @brief get the Current(Current flows across IN+ and IN-.
-	 * @n If the current flows from IN+ to IN-, the reading is positive. 
-	 * @n If the current flows from IN- to IN+, the reading is negative)
+     * @n If the current flows from IN+ to IN-, the reading is positive. 
+     * @n If the current flows from IN- to IN+, the reading is negative)
      * @return Current unit:mA
      */
     float getCurrent_mA();
@@ -163,13 +163,13 @@ public:
     /**
      * @fn getPower_mW
      * @brief 获取功率
-	 * @details the power resolution read directly from the module is 20mW 
-	 * @n (hardware mode). If the power is obtained by using the statement 
-	 * @n "Power = BusVoltage*Current;", the resolution can be increased to 4mW 
-	 * @n (software mode).
+     * @details the power resolution read directly from the module is 20mW 
+     * @n (hardware mode). If the power is obtained by using the statement 
+     * @n "Power = BusVoltage*Current;", the resolution can be increased to 4mW 
+     * @n (software mode).
      * @return power unit：mW
      */
-	float getPower_mW();
+     float getPower_mW();
 
     /**
      * @fn setBRNG
@@ -178,7 +178,7 @@ public:
      * @n               eIna219BusVolRange_32V < 32V >
      */
     void  setBRNG(eIna219BusVolRange_t value);
-	
+ 
     /**
      * @fn setPGA
      * @brief  设置 PGA参数(Shunt Voltage Only)
@@ -188,7 +188,7 @@ public:
      * @n                   eIna219PGABits_8 <GAIN:/8,Range ±320 mV> 
      */
     void  setPGA(eIna219PGABits_t bits);
-	
+ 
     /**
      * @fn setBADC
      * @brief  设置 BADC参数(Bus ADC Resolution/Averaging)
@@ -206,7 +206,7 @@ public:
      * @n                    eIna219AdcSample_32,
      * @n                    eIna219AdcSample_64,
      * @n                    eIna219AdcSample_128
-	 */
+     */
     void  setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
 
     /**
@@ -242,7 +242,7 @@ public:
      * @n                eIna219BVolCon,     <Bus voltage, continuous>  
      * @n                eIna219SAndBVolCon  <Shunt and bus, continuous> 
      */
-	void  setMode(eInaMode_t mode);
+    void  setMode(eInaMode_t mode);
     
     eIna219Status_t lastOperateStatus;
 protected:

@@ -44,7 +44,7 @@
      * @param extMeterReading_mA  实际测量的电流
      */
     void linearCalibrate(float ina219Reading_mA, float extMeterReading_mA),
-	
+ 
     /**
      * @fn reset
      * @brief 复位配置寄存器
@@ -65,11 +65,11 @@
      */
     float getShuntVoltage_mV();
     
-	/**
+    /**
      * @fn getCurrent_mA
      * @brief 获取流经IN+和IN-的电流
-	 * @n 若电流从IN+流向IN-，电流值为正. 
-	 * @n 若为电流从IN-流向IN+，电流值为负
+     * @n 若电流从IN+流向IN-，电流值为正. 
+     * @n 若为电流从IN-流向IN+，电流值为负
      * @return 电流 单位:mA
      */
     float getCurrent_mA();
@@ -77,11 +77,11 @@
     /**
      * @fn getPower_mW
      * @brief 获取功率
-	 * @details 直接从模块读取到的功率分辨率为20mW（硬件方式），若使用语句“Power = 
-	 * @n  BusVoltage*Current;”得到功率，其分辨率可提高至4mW（软件方式）。
+     * @details 直接从模块读取到的功率分辨率为20mW（硬件方式），若使用语句“Power = 
+     * @n  BusVoltage*Current;”得到功率，其分辨率可提高至4mW（软件方式）。
      * @return 功率 unit：mW
      */
-	float getPower_mW();
+    float getPower_mW();
 
     /**
      * @fn setBRNG
@@ -90,7 +90,7 @@
      * @n               eIna219BusVolRange_32V < 32V >
      */
     void  setBRNG(eIna219BusVolRange_t value);
-	
+ 
     /**
      * @fn setPGA
      * @brief  设置 PGA参数
@@ -100,7 +100,7 @@
      * @n                   eIna219PGABits_8 <增益:/8,量程 ±320 mV> 
      */
     void  setPGA(eIna219PGABits_t bits);
-	
+ 
     /**
      * @fn setBADC
      * @brief  设置 BADC参数
@@ -118,7 +118,7 @@
      * @n                    eIna219AdcSample_32,
      * @n                    eIna219AdcSample_64,
      * @n                    eIna219AdcSample_128
-	 */
+     */
     void  setBADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample);
 
     /**
@@ -154,7 +154,7 @@
      * @n                eIna219BVolCon,     <Bus voltage, continuous>  
      * @n                eIna219SAndBVolCon  <Shunt and bus, continuous> 
      */
-	void  setMode(eInaMode_t mode);
+    void  setMode(eInaMode_t mode);
 
 ```
 
