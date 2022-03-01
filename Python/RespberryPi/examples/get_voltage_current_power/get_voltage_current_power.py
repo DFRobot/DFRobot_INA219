@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
 
+'''!
+  @file getVoltageCurrentPower.py
+  @brief 获取用电设备的电流,电压,功率
+  @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+  @license     The MIT license (MIT)
+  @author [fengli](li.feng@dfrobot.com)
+  @version  V1.0
+  @date  2022-3-1
+  @url https://github.com/DFRobot/DFRobot_INA219
 '''
-file get_voltage_current_power.py
-SEN0291 Wattmeter Sensor
-This sensor can detect Voltage ,Current,and Power
-The module has four I2C, these addresses are:
-
-ADDRESS 1  0x40   A0 = 0  A1 = 0
-ADDRESS 2  0x41   A0 = 1  A1 = 0
-ADDRESS 3  0x44   A0 = 0  A1 = 1
-ADDRESS 4  0x45   A0 = 1  A1 = 1
-
-Copyright    [DFRobot](http://www.dfrobot.com), 2016
-Copyright    GNU Lesser General Public License
-version  V1.0
-date  2019-2-27
-'''
-
+import sys
 import time
+sys.path.append("../..")
 from DFRobot_INA219 import INA219
 
 ina219_reading_mA = 1000

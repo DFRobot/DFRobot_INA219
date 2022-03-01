@@ -1,43 +1,37 @@
-# INA219
-- [中文版](./README_CN.md)
+# DFRobot_INA219
+- [English Version](./README.md)
 
-INA219 is a Gravity I2C digital power meter<br>
-INA219 can measure the current, voltage and power of various electronic modules within 26V 8A with an accuracy higher than 0.2%.<br>
-INA219 can be used for power measurement of solar system, battery coulomb meter or electronic module.<br>
+  Gravity: I2C数字功率计是一款可测量26V 8A以内各类电子模块、用电设备的电压、电流和功率，最大相对误差不超过±0.2%的高分辨、高精度、大量程测量模块（使用前需进行一次简单的手动校准）。可用于太阳能系统、电池库仑计、电机、主控板或电子模块的功耗测量、电池续航评估与实时电源参数在线监控。
 
 ![产品效果图片](../../resources/images/SEN0291.jpg)
 
-## Product Link（https://www.dfrobot.com/product-1827.html）
 
-    SEN0291：I2C Digital Wattmeter
+## 产品链接（https://www.dfrobot.com.cn/goods-1890.html）
 
-## Table of Contents
+    DFR0715：Gravity: I2C数字功率计
 
-* [Summary](#summary)
-* [Installation](#installation)
-* [Methods](#methods)
-* [Compatibility](#compatibility)
-* [Credits](#credits)
+## 目录
+
+  * [概述](#概述)
+  * [库安装](#库安装)
+  * [方法](#方法)
+  * [兼容性](#兼容性)
+  * [历史](#历史)
+  * [创作者](#创作者)
+## 概述
+
+通过I2C读取INA219取样电阻两端的电压、电流、功率和电压。
+这些数据通过串口输出。
 
 
-## Summary
-The voltage, current, power and voltage at both ends of the sampling resistance of INA219 can be read through I2C.
-These data are printed out through the serial port.
+## 库安装
 
+要使用此库，请先下载库文件，并将其粘贴到\Arduino\libraries目录中
+，然后打开示例文件夹并在该文件夹中运行demo。
 
-## Installation
+## 方法
 
-This Sensor should work with INA219 on RaspberryPi.<br>
-Run the program:
-```
-$> python DFRobot_INA219_test.py
-
-```
-
-## Methods
-
-```Python
-
+```python
   def begin(self):
     '''!
       @fn begin
@@ -62,31 +56,32 @@ $> python DFRobot_INA219_test.py
   def get_bus_voltage_V(self):
       '''!
         @fn get_bus_voltage_V
-        @brief  get the BusVoltage （Voltage of IN- to GND)
-        @return Voltage unit:V
+        @brief  获取 IN-相对GND电压
+        @return 电压 单位:V
       '''
 
   def get_shunt_voltage_mV(self):
       '''
         @fn get_shunt_voltage_mV
-        @brief  get the ShuntVoltage （Voltage of the sampling resistor, IN+ to NI-)
-        @return Voltage unit:mV
+        @brief  获取IN+相对IN-的两端电压
+        @return 电压 单位:mV
       '''
 
   def get_current_mA(self):
       '''
         @fn get_current_mA
-        @brief get the Current(Current flows across IN+ and IN-.
-        @n If the current flows from IN+ to IN-, the reading is positive. 
-        @n If the current flows from IN- to IN+, the reading is negative)
-        @return Current unit:mA
+        @brief 获取流经IN+和IN-的电流
+        @n 若电流从IN+流向IN-，电流值为正. 
+        @n 若为电流从IN-流向IN+，电流值为负
+        @return 电流 单位:mA
       '''
 
   def get_power_mW(self):
      '''
-       @fn get_power_mW
-       @brief  get the ShuntVoltage （Voltage of the sampling resistor, IN+ to NI-)
-       @return Voltage unit:mV
+       @brief 获取功率
+       @details 直接从模块读取到的功率分辨率为20mW（硬件方式），若使用语句“Power = 
+       @n  BusVoltage*Current;”得到功率，其分辨率可提高至4mW（软件方式）。
+       @return 功率 unit：mW
      '''
 
   def set_bus_RNG(self, value):
@@ -100,17 +95,17 @@ $> python DFRobot_INA219_test.py
   def set_PGA(self, bits):
       '''
         @fn set_PGA
-        @brief  设置 PGA参数(Shunt Voltage Only)
-        @param bits          PGA_bits_1 <GAIN:1,Range ±40 mV>
-        @n                   PGA_bits_2 <GAIN:/2,Range ±80 mV>
-        @n                   PGA_bits_4 <GAIN:/4,Range ±160 mV> 
-        @n                   PGA_bits_8 <GAIN:/8,Range ±320 mV> 
+        @brief  设置 PGA参数
+        @param bits          eIna219PGABits_1 <增益:1,量程 ±40 mV>
+        @n                   eIna219PGABits_2 <增益:/2,量程 ±80 mV>
+        @n                   eIna219PGABits_4 <增益:/4,量程 ±160 mV> 
+        @n                   eIna219PGABits_8 <增益:/8,量程 ±320 mV> 
       '''
 
   def set_bus_ADC(self, bits, sample):
       '''!
         @fn set_bus_ADC
-        @brief  设置 BADC参数(Bus ADC Resolution/Averaging)
+        @brief  设置 BADC参数
         @param bits           Resolution
         @n                    adc_bits_9,
         @n                    adc_bits_10,
@@ -130,7 +125,7 @@ $> python DFRobot_INA219_test.py
   def set_shunt_ADC(self, bits, sample):
       '''!
         @fn set_shunt_ADC
-        @brief  设置SADC参数(Shunt ADC Resolution/Averaging)
+        @brief  设置SADC参数
         @param bits           Resolution
         @n                    adc_bits_9,
         @n                    adc_bits_10,
@@ -150,7 +145,7 @@ $> python DFRobot_INA219_test.py
   def set_mode(self, mode):
       '''
         @fn set_mode
-        @brief  Set operation Mode
+        @brief  设置读取模式
         @param mode  
         @n                power_down,   <Power-down> 
         @n                shunt_vol_trig,    <Shunt voltage, triggered> 
@@ -162,27 +157,28 @@ $> python DFRobot_INA219_test.py
         @n                shunt_and_bus_vol_con   <Shunt and bus, continuous> 
       '''
 
+  '''
+
 ```
 
+## 兼容性
 
-## Compatibility
-
-| MCU         | Work Well | Work Wrong | Untested | Remarks |
+| 主板         | 通过 | 未通过 | 未测试 | 备注 |
 | ------------ | :--: | :----: | :----: | :--: |
 | RaspberryPi2 |      |        |   √    |      |
 | RaspberryPi3 |      |        |   √    |      |
 | RaspberryPi4 |  √   |        |        |      |
 
-* Python Version
+* Python 版本
 
-| Python  | Work Well | Work Wrong | Untested | Remarks |
+| Python  | 通过 | 未通过 | 未测试 | 备注 |
 | ------- | :--: | :----: | :----: | ---- |
 | Python2 |  √   |        |        |      |
 | Python3 |  √   |        |        |      |
-## History
+## 历史
 
 - 2022/3/1 - Version 1.0.0 released.
 
-## Credits
+## 创作者
 
 Written by fengli(li.feng@dfrobot.com), 2022.3.1 (Welcome to our [website](https://www.dfrobot.com/))

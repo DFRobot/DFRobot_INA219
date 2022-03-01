@@ -1,3 +1,16 @@
+/*!
+ * @file DFRobot_INA219.cpp
+ * @brief Define the infrastructure of the DFRobot_INA219 class
+ * @details 该库用来驱动INA219芯片,可用来检测用电设备的电压、电流和功率
+ * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ * @License     The MIT License (MIT)
+ * @author [fengli](li.feng@dfrobot.com)
+ * @version  V1.0
+ * @date  2022-03-1
+ * @url https://github.com/DFRobot/DFRobot_INA219
+ */
+
+
 #include <Arduino.h>
 #include <Wire.h>
 #include <DFRobot_INA219.h>
@@ -106,7 +119,7 @@ void DFRobot_INA219::setSADC(eIna219AdcBits_t bits, eIna219AdcSample_t sample)
     writeInaReg(INA219_REG_CONFIG, conf);
 }
 /*Selects continuous, triggered, or power-down mode of operation*/
-void DFRobot_INA219::setMode(eInaMode mode)
+void DFRobot_INA219::setMode(eInaMode_t mode)
 {
     int16_t    conf;
     conf = readInaReg(INA219_REG_CONFIG);

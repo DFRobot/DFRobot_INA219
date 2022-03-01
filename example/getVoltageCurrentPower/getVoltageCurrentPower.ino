@@ -1,23 +1,26 @@
-
 /*!
-   file getVoltageCurrentPower.ino
-   SEN0291 Gravity: I2C Digital Wattmeter
-   The module is connected in series between the power supply and the load to read the voltage, current and power
-   The module has four I2C, these addresses are:
-   INA219_I2C_ADDRESS1  0x40   A0 = 0  A1 = 0
-   INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
-   INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1
-   INA219_I2C_ADDRESS4  0x45   A0 = 1  A1 = 1
-  
-   Copyright    [DFRobot](http://www.dfrobot.com), 2016
-   Copyright    GNU Lesser General Public License
-   version  V0.1
-   date  2019-2-27
+ *@file getVoltageCurrentPower.ino
+ *@brief 获取用电设备的电流,电压,功率
+ *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
+ *@license     The MIT license (MIT)
+ *@author [fengli](li.feng@dfrobot.com)
+ *@version  V1.0
+ *@date  2022-3-1
+ *@url https://github.com/DFRobot/DFRobot_INA219
 */
 
 #include <Wire.h>
 #include "DFRobot_INA219.h"
 
+/**
+ * @fn DFRobot_INA219_IIC
+ * @brief pWire I2C控制器指针
+ * @param i2caddr  I2C 地址
+ * @n INA219_I2C_ADDRESS1  0x40   A0 = 0  A1 = 0
+ * @n INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
+ * @n INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1
+ * @n INA219_I2C_ADDRESS4  0x45   A0 = 1  A1 = 1	 
+  */
 DFRobot_INA219_IIC     ina219(&Wire, INA219_I2C_ADDRESS4);
 
 // Revise the following two paramters according to actula reading of the INA219 and the multimeter
@@ -28,14 +31,17 @@ float extMeterReading_mA = 1000;
 void setup(void) 
 {
     Serial.begin(115200);
+	//等待打开串口
     while(!Serial);
     
     Serial.println();
+	//初始化
     while(ina219.begin() != true) {
         Serial.println("INA219 begin faild");
         delay(2000);
     }
-    ina219.linearCalibrate(ina219Reading_mA, extMeterReading_mA);
+	//线性校准
+    ina219.linearCalibrate(/*未校准测量的电流*/ina219Reading_mA, /*其它电流测量仪器测得的电流*/extMeterReading_mA);
     Serial.println();
 }
 
