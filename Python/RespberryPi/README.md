@@ -1,4 +1,4 @@
-# INA219
+# DFRobot_INA219
 - [中文版](./README_CN.md)
 
 INA219 is a Gravity I2C digital power meter<br>
