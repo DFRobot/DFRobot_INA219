@@ -2,7 +2,7 @@
 '''!
    @file DFRobot_INA219.py
    @brief Define the infrastructure of the DFRobot_INA219 class
-   @details 该库用来驱动INA219芯片,可用来检测用电设备的电压、电流和功率
+   @details The library is used to drive INA219 chip, which can detect the voltage, current and power of various electronic devices.
    @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
    @License     The MIT License (MIT)
    @author [fengli](li.feng@dfrobot.com)
@@ -22,22 +22,22 @@ class INA219:
   INA219_I2C_ADDRESS3            = (0x44)# I2C ADDRESS 3
   INA219_I2C_ADDRESS4            = (0x45)# I2C ADDRESS 4
   
-  INA219_CONFIG_RESET            = (0x8000) #配置复位寄存器
-  _INA219_REG_CONFIG             = (0x00)   #配置寄存器
+  INA219_CONFIG_RESET            = (0x8000) #Config reset register
+  _INA219_REG_CONFIG             = (0x00)   #Config register
   
-  bus_vol_range_16V              = 0 # 电压范围为±16V
-  bus_vol_range_32V              = 1 # 电压范围为±32V
+  bus_vol_range_16V              = 0 # Voltage range ±16V
+  bus_vol_range_32V              = 1 # Voltage range ±32V
   #GAIN and range for PGA(Shunt Voltage Only)
   PGA_bits_1                     = 0 # GAIN:1,Range ±40 mV
   PGA_bits_2                     = 1 # GAIN:/2,Range ±80 mV
   PGA_bits_4                     = 2 # GAIN:/4,Range ±160 mV
   PGA_bits_8                     = 3 # GAIN:/8,Range ±320 mV
   
-  adc_bits_9                     = 0 # 分辨率为9bit
-  adc_bits_10                    = 1 # 分辨率为10bit
-  adc_bits_11                    = 2 # 分辨率为11bit
-  adc_bits_12                    = 3 # 分辨率为12bit
-  #每次adc采集的样本数                          
+  adc_bits_9                     = 0 # Resolution is 9bit
+  adc_bits_10                    = 1 # Resolution is 10bit
+  adc_bits_11                    = 2 # Resolution is 11bit
+  adc_bits_12                    = 3 # Resolution is 12bit
+  #Size of the sample collected by adc every time                          
   adc_sample_1                   = 0 
   adc_sample_2                   = 1
   adc_sample_4                   = 2
@@ -74,8 +74,8 @@ class INA219:
   def begin(self):
     '''!
       @fn begin
-      @brief 在读取数据之前,初始化I2C总线,配置INA219的配置寄存器
-      @return True(成功)/False(失败)
+      @brief Initialize I2C bus and configure INA219 config register before reading data
+      @return True (succeeded)/False (failed)
     '''
     if not self.scan():
         return False
@@ -91,9 +91,9 @@ class INA219:
   def linear_cal(self, ina219_reading_mA, ext_meter_reading_mA):
       '''!
         @fn linear_cal
-        @brief 线性校准
-        @param ina219_reading_mA    通过INA219测量得到的电流(未校准前)
-        @param ext_meter_reading_mA  实际测量的电流
+        @brief Linear calibration
+        @param ina219_reading_mA    The current measured by INA219 (before calibration)
+        @param ext_meter_reading_mA  Actual measured current
       '''
       ina219_reading_mA = float(ina219_reading_mA)
       ext_meter_reading_mA = float(ext_meter_reading_mA)
@@ -103,7 +103,7 @@ class INA219:
   def reset(self):
       '''!
         @fn reset
-        @brief 复位配置寄存器
+        @brief Reset config register
       '''
       self._write_register(self._INA219_REG_CONFIG, self._INA219_CONFIG_RESET)
   
@@ -150,7 +150,7 @@ class INA219:
   def set_bus_RNG(self, value):
       '''
         @fn set_bus_RNG
-        @brief  设置 BRNG参数(Bus Voltage Range)
+        @brief  Set BRNG (Bus Voltage Range)
         @param value     bus_vol_range_16V < 16V >
         @n               bus_vol_range_32V < 32V >
       '''
@@ -163,7 +163,7 @@ class INA219:
   def set_PGA(self, bits):
       '''
         @fn set_PGA
-        @brief  设置 PGA参数(Shunt Voltage Only)
+        @brief  Set PGA parameter (Shunt Voltage Only)
         @param bits          PGA_bits_1 <GAIN:1,Range ±40 mV>
         @n                   PGA_bits_2 <GAIN:/2,Range ±80 mV>
         @n                   PGA_bits_4 <GAIN:/4,Range ±160 mV> 
@@ -178,13 +178,13 @@ class INA219:
   def set_bus_ADC(self, bits, sample):
       '''!
         @fn set_bus_ADC
-        @brief  设置 BADC参数(Bus ADC Resolution/Averaging)
+        @brief  Set BADC parameter (Bus ADC Resolution/Averaging)
         @param bits           Resolution
         @n                    adc_bits_9,
         @n                    adc_bits_10,
         @n                    adc_bits_11,
         @n                    adc_bits_12
-        @param sample         样本数
+        @param sample         Sample size
         @n                    adc_sample_1,
         @n                    adc_sample_2,
         @n                    adc_sample_4,
@@ -210,13 +210,13 @@ class INA219:
   def set_shunt_ADC(self, bits, sample):
       '''!
         @fn set_shunt_ADC
-        @brief  设置SADC参数(Shunt ADC Resolution/Averaging)
+        @brief  Set SADC parameter (Shunt ADC Resolution/Averaging)
         @param bits           Resolution
         @n                    adc_bits_9,
         @n                    adc_bits_10,
         @n                    adc_bits_11,
         @n                    adc_bits_12
-        @param sample         样本数
+        @param sample         Sample size
         @n                    adc_sample_1,
         @n                    adc_sample_2,
         @n                    adc_sample_4,

@@ -1,7 +1,7 @@
 /*!
  * @file DFRobot_INA219.h
  * @brief Define the infrastructure of the DFRobot_INA219 class
- * @details 该库用来驱动INA219芯片,可用来检测用电设备的电压、电流和功率
+ * @details The library is used to drive INA219 chip, which can detect the voltage, current and power of various electronic devices.
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @License     The MIT License (MIT)
  * @author [fengli](li.feng@dfrobot.com)
@@ -21,9 +21,9 @@
 
 #define DFROBOT_INA219_READ                      (0x01)///<Register Configuration
 
-#define INA219_REG_CONFIG                        (0x00) ///<配置寄存器
-#define INA219_CONFIG_RESET                      (0x8000) ///<配置复位寄存器
-#define INA219_CONFIG_BUSVOLTAGERANGE_MASK       (0x2000) ///<配置总线电压范围
+#define INA219_REG_CONFIG                        (0x00) ///<Config register
+#define INA219_CONFIG_RESET                      (0x8000) ///<Config reset register
+#define INA219_CONFIG_BUSVOLTAGERANGE_MASK       (0x2000) ///<Config bus voltage range
 #define INA219_REG_SHUNTVOLTAGE                  (0x01)///<Shunt Voltage Register
 #define INA219_REG_BUSVOLTAGE                    (0x02)///<Bus Voltage Register
 #define INA219_REG_POWER                         (0x03)///<Power Register
@@ -36,14 +36,14 @@ class DFRobot_INA219
 public:
 /**
  * @enum eIna219Status_t
- * @brief 错误码
- * @details 对程序运行上出现的错误进行说明
+ * @brief Error code
+ * @details Explain errors that occur when running the program
  */
 typedef enum {
-    eIna219_ok,/**<无错误 */
-    eIna219_InitError,/**<初始化错误 */
-    eIna219_WriteRegError,/**<写寄存器错误 */
-    eIna219_ReadRegError,/**<读寄存器错误 */
+    eIna219_ok,/**<No error */
+    eIna219_InitError,/**<Init error */
+    eIna219_WriteRegError,/**<Write register error */
+    eIna219_ReadRegError,/**<Read register error */
 }eIna219Status_t;
 
 /**
@@ -81,7 +81,7 @@ typedef enum {
 
 /**
  * @enum eIna219AdcSample_t
- * @brief 每次adc采集的样本数
+ * @brief Size of the sample collected by adc every time
  */
 typedef enum {
     eIna219AdcSample_1,
@@ -111,29 +111,29 @@ typedef enum{
 public:
     /**
      * @fn DFRobot_INA219
-     * @brief 构造函数
+     * @brief Constructor
      * @return None
      */
     DFRobot_INA219(){};
 
     /**
      * @fn begin
-     * @brief 在读取数据之前,初始化I2C总线,配置INA219的配置寄存器
-     * @return true(成功)/false(失败)
+     * @brief Initialize I2C bus and configure INA219 config register before reading data
+     * @return true (succeeded)/false (failed)
      */
     bool begin();
 
     /**
      * @fn linearCalibrate
-     * @brief 线性校准
-     * @param ina219Reading_mA    通过INA219测量得到的电流(未校准前)
-     * @param extMeterReading_mA  实际测量的电流
+     * @brief Linear calibration
+     * @param ina219Reading_mA    The current measured by INA219 (before calibration)
+     * @param extMeterReading_mA  Actual measured current
      */
     void linearCalibrate(float ina219Reading_mA, float extMeterReading_mA);
 	
     /**
      * @fn reset
-     * @brief 复位配置寄存器
+     * @brief Reset config register
      */
     void reset();
 
@@ -162,7 +162,7 @@ public:
     
     /**
      * @fn getPower_mW
-     * @brief 获取功率
+     * @brief Get power
      * @details the power resolution read directly from the module is 20mW 
      * @n (hardware mode). If the power is obtained by using the statement 
      * @n "Power = BusVoltage*Current;", the resolution can be increased to 4mW 
@@ -173,7 +173,7 @@ public:
 
     /**
      * @fn setBRNG
-     * @brief  设置 BRNG参数(Bus Voltage Range)
+     * @brief  Set BRNG (Bus Voltage Range)
      * @param value     eIna219BusVolRange_16V < 16V >
      * @n               eIna219BusVolRange_32V < 32V >
      */
@@ -181,7 +181,7 @@ public:
  
     /**
      * @fn setPGA
-     * @brief  设置 PGA参数(Shunt Voltage Only)
+     * @brief  Set PGA parameter (Shunt Voltage Only)
      * @param bits          eIna219PGABits_1 <GAIN:1,Range ±40 mV>
      * @n                   eIna219PGABits_2 <GAIN:/2,Range ±80 mV>
      * @n                   eIna219PGABits_4 <GAIN:/4,Range ±160 mV> 
@@ -191,13 +191,13 @@ public:
  
     /**
      * @fn setBADC
-     * @brief  设置 BADC参数(Bus ADC Resolution/Averaging)
+     * @brief  Set BADC parameter (Bus ADC Resolution/Averaging)
      * @param bits           Resolution
      * @n                    eIna219AdcBits_9,
      * @n                    eIna219AdcBits_10,
      * @n                    eIna219AdcBits_11,
      * @n                    eIna219AdcBits_12
-     * @param sample         样本数
+     * @param sample         Sample size
      * @n                    eIna219AdcSample_1,
      * @n                    eIna219AdcSample_2,
      * @n                    eIna219AdcSample_4,
@@ -211,13 +211,13 @@ public:
 
     /**
      * @fn setSADC
-     * @brief  设置SADC参数(Shunt ADC Resolution/Averaging)
+     * @brief  Set SADC parameter (Shunt ADC Resolution/Averaging)
      * @param bits           Resolution
      * @n                    eIna219AdcBits_9,
      * @n                    eIna219AdcBits_10,
      * @n                    eIna219AdcBits_11,
      * @n                    eIna219AdcBits_12
-     * @param sample         样本数
+     * @param sample         Sample size
      * @n                    eIna219AdcSample_1,
      * @n                    eIna219AdcSample_2,
      * @n                    eIna219AdcSample_4,
@@ -263,9 +263,9 @@ class DFRobot_INA219_IIC : public DFRobot_INA219
 public:
     /**
      * @fn DFRobot_INA219_IIC
-     * @brief 构造函数
-     * @param pWire I2C控制器指针
-     * @param i2caddr  I2C 地址
+     * @brief Constructor
+     * @param pWire I2C controller pointer
+     * @param i2caddr  I2C address
      * @n INA219_I2C_ADDRESS1  0x40   A0 = 0  A1 = 0
      * @n INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
      * @n INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1

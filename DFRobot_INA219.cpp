@@ -1,7 +1,7 @@
 /*!
  * @file DFRobot_INA219.cpp
  * @brief Define the infrastructure of the DFRobot_INA219 class
- * @details 该库用来驱动INA219芯片,可用来检测用电设备的电压、电流和功率
+ * @details The library is used to drive INA219 chip, which can detect the voltage, current and power of various electronic devices.
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @License     The MIT License (MIT)
  * @author [fengli](li.feng@dfrobot.com)

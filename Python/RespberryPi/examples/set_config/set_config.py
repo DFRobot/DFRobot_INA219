@@ -2,7 +2,7 @@
 
 '''
  *@file setConfig.py
- *@brief 如何配置配置寄存器参数
+ *@brief How to configure parameters of the config register
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@license     The MIT license (MIT)
  *@author [fengli](li.feng@dfrobot.com)
@@ -19,7 +19,7 @@ ina219_reading_mA = 1000
 ext_meter_reading_mA = 1000
 
 '''
-  @param i2caddr  I2C 地址
+  @param i2caddr  I2C address
   @n INA219_I2C_ADDRESS1  0x40   A0 = 0  A1 = 0
   @n INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
   @n INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1

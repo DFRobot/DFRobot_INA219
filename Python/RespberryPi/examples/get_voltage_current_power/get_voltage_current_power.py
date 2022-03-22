@@ -2,7 +2,7 @@
 
 '''!
   @file getVoltageCurrentPower.py
-  @brief 获取用电设备的电流,电压,功率
+  @brief Get the current, voltage, and power of electronic devices.
   @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT license (MIT)
   @author [fengli](li.feng@dfrobot.com)
@@ -24,7 +24,7 @@ ina = INA219(1, INA219.INA219_I2C_ADDRESS4)                                #Chan
 while not ina.begin():
     time.sleep(2)
 '''
-Revise the following two paramters according to actula reading of the INA219 and the multimeter
+Revise the following two paramters according to actual reading of the INA219 and the multimeter
 for linearly calibration
 '''
 

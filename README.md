@@ -35,22 +35,22 @@ To use this library, please download the library file first, and paste it into t
 
     /**
      * @fn begin
-     * @brief 在读取数据之前,初始化I2C总线,配置INA219的配置寄存器
-     * @return true(成功)/false(失败)
+     * @brief Initialize I2C bus and configure INA219 config register before reading data
+     * @return true (succeeded)/false (failed)
      */
     bool begin();
 
     /**
      * @fn linearCalibrate
-     * @brief 线性校准
-     * @param ina219Reading_mA    通过INA219测量得到的电流(未校准前)
-     * @param extMeterReading_mA  实际测量的电流
+     * @brief Linear calibration
+     * @param ina219Reading_mA    The current measured by INA219 (before calibration)
+     * @param extMeterReading_mA  Actual measured current
      */
     void linearCalibrate(float ina219Reading_mA, float extMeterReading_mA),
  
     /**
      * @fn reset
-     * @brief 复位配置寄存器
+     * @brief Reset config register
      */
     void reset();
 
@@ -79,7 +79,7 @@ To use this library, please download the library file first, and paste it into t
     
     /**
      * @fn getPower_mW
-     * @brief 获取功率
+     * @brief Get power
      * @details the power resolution read directly from the module is 20mW 
      * @n (hardware mode). If the power is obtained by using the statement 
      * @n "Power = BusVoltage*Current;", the resolution can be increased to 4mW 
@@ -90,7 +90,7 @@ To use this library, please download the library file first, and paste it into t
 
     /**
      * @fn setBRNG
-     * @brief  设置 BRNG参数(Bus Voltage Range)
+     * @brief  Set BRNG (Bus Voltage Range)
      * @param value     eIna219BusVolRange_16V < 16V >
      * @n               eIna219BusVolRange_32V < 32V >
      */
@@ -98,7 +98,7 @@ To use this library, please download the library file first, and paste it into t
  
     /**
      * @fn setPGA
-     * @brief  设置 PGA参数(Shunt Voltage Only)
+     * @brief  Set PGA parameter (Shunt Voltage Only)
      * @param bits          eIna219PGABits_1 <GAIN:1,Range ±40 mV>
      * @n                   eIna219PGABits_2 <GAIN:/2,Range ±80 mV>
      * @n                   eIna219PGABits_4 <GAIN:/4,Range ±160 mV> 
@@ -108,13 +108,13 @@ To use this library, please download the library file first, and paste it into t
  
     /**
      * @fn setBADC
-     * @brief  设置 BADC参数(Bus ADC Resolution/Averaging)
+     * @brief  Set BADC parameter (Bus ADC Resolution/Averaging)
      * @param bits           Resolution
      * @n                    eIna219AdcBits_9,
      * @n                    eIna219AdcBits_10,
      * @n                    eIna219AdcBits_11,
      * @n                    eIna219AdcBits_12
-     * @param sample         样本数
+     * @param sample         Sample size
      * @n                    eIna219AdcSample_1,
      * @n                    eIna219AdcSample_2,
      * @n                    eIna219AdcSample_4,
@@ -128,13 +128,13 @@ To use this library, please download the library file first, and paste it into t
 
     /**
      * @fn setSADC
-     * @brief  设置SADC参数(Shunt ADC Resolution/Averaging)
+     * @brief  Set SADC parameter (Shunt ADC Resolution/Averaging)
      * @param bits           Resolution
      * @n                    eIna219AdcBits_9,
      * @n                    eIna219AdcBits_10,
      * @n                    eIna219AdcBits_11,
      * @n                    eIna219AdcBits_12
-     * @param sample         样本数
+     * @param sample         Sample size
      * @n                    eIna219AdcSample_1,
      * @n                    eIna219AdcSample_2,
      * @n                    eIna219AdcSample_4,

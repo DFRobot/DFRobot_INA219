@@ -1,7 +1,7 @@
 
 /*!
  *@file setConfig.ino
- *@brief 如何配置配置寄存器参数
+ *@brief How to configure parameters of the config register
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@license     The MIT license (MIT)
  *@author [fengli](li.feng@dfrobot.com)
@@ -14,8 +14,8 @@
 
 /**
  * @fn DFRobot_INA219_IIC
- * @brief pWire I2C控制器指针
- * @param i2caddr  I2C 地址
+ * @brief pWire I2C controller pointer
+ * @param i2caddr  I2C address
  * @n INA219_I2C_ADDRESS1  0x40   A0 = 0  A1 = 0
  * @n INA219_I2C_ADDRESS2  0x41   A0 = 1  A1 = 0
  * @n INA219_I2C_ADDRESS3  0x44   A0 = 0  A1 = 1
@@ -33,13 +33,13 @@ void setup(void)
         Serial.println("INA219 begin faild");
         delay(2000);
     }
-	//设置 BRNG参数(Bus Voltage Range)
+	//Set BRNG (Bus Voltage Range)
     ina219.setBRNG(ina219.eIna219BusVolRange_32V);
-	//设置 PGA参数(Shunt Voltage Only)
+	//Set PGA parameter(Shunt Voltage Only)
     ina219.setPGA(ina219.eIna219PGABits_1);
-    //设置 BADC参数(Bus ADC Resolution/Averaging)
+    //Set BADC parameter (Bus ADC Resolution/Averaging)
 	ina219.setBADC(ina219.eIna219AdcBits_12, ina219.eIna219AdcSample_8);
-    //设置SADC参数(Shunt ADC Resolution/Averaging)
+    //Set SADC parameter (Shunt ADC Resolution/Averaging)
 	ina219.setSADC(ina219.eIna219AdcBits_12, ina219.eIna219AdcSample_8);
 	//Set operation Mode(Bus Voltage Range)
     ina219.setMode(ina219.eIna219SAndBVolCon);
