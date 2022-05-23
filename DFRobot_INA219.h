@@ -254,6 +254,7 @@ protected:
     virtual void readReg(uint8_t reg, uint8_t *pBuf, uint16_t len);
     uint8_t BusRange, Pga, Badc, Sadc, Mode;
     int16_t readInaReg(uint8_t reg);
+    uint16_t readInaRegUnsigned(uint8_t reg);
     void writeInaReg(uint8_t reg, uint16_t value);
     
 };
