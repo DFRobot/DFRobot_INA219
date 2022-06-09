@@ -45,7 +45,7 @@ void DFRobot_INA219::linearCalibrate(float ina219Reading_mA, float extMeterReadi
 
 float DFRobot_INA219::getBusVoltage_V()
 {
-    return (float) (readInaReg(INA219_REG_BUSVOLTAGE) >> 1) * 0.001;
+    return (float) (readInaRegUnsigned(INA219_REG_BUSVOLTAGE) >> 3) * 0.004;
 }
 
 float DFRobot_INA219::getShuntVoltage_mV()
@@ -165,6 +165,14 @@ int16_t DFRobot_INA219::readInaReg(uint8_t reg)
 {
     uint8_t buf[2] = {0};
     
+    readReg(reg, buf, sizeof(buf));
+    return (buf[0] << 8) | buf[1];
+}
+
+uint16_t DFRobot_INA219::readInaRegUnsigned(uint8_t reg)
+{
+    uint8_t buf[2] = {0};
+
     readReg(reg, buf, sizeof(buf));
     return (buf[0] << 8) | buf[1];
 }
