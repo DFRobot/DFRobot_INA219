@@ -137,6 +137,7 @@ void DFRobot_INA219_IIC::writeReg(uint8_t reg, uint8_t *pBuf, uint16_t len)
 {
     lastOperateStatus = eIna219_WriteRegError;
     _pWire->begin();
+    _pWire->setClock(_speed);
     _pWire->beginTransmission(_addr);
     _pWire->write(reg);
     for(uint16_t i = 0; i < len; i ++)
@@ -149,6 +150,7 @@ void DFRobot_INA219_IIC::readReg(uint8_t reg, uint8_t *pBuf, uint16_t len)
 {
     lastOperateStatus = eIna219_ReadRegError;
     _pWire->begin();
+    _pWire->setClock(_speed);
     _pWire->beginTransmission(_addr);
     _pWire->write(reg);
     if(_pWire->endTransmission() != 0)
