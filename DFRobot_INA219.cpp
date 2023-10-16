@@ -191,3 +191,24 @@ bool DFRobot_INA219_IIC::scan()
     }
     return false;
 }
+
+bool DFRobot_INA219_IIC::begin()
+{
+    lastOperateStatus = eIna219_InitError;
+    _pWire->begin();
+    if (scan() == true)
+    {
+        setBRNG(eIna219BusVolRange_32V);
+        setPGA(eIna219PGABits_8);
+        setBADC(eIna219AdcBits_12, eIna219AdcSample_8);
+        setSADC(eIna219AdcBits_12, eIna219AdcSample_8);
+        setMode(eIna219SAndBVolCon);
+        calValue = 4096;
+        writeInaReg(INA219_REG_CALIBRATION, calValue);
+        lastOperateStatus = eIna219_ok;
+        return true;
+    }
+    else{
+        return false;
+    }
+}

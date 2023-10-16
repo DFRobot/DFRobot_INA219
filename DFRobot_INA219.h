@@ -273,7 +273,7 @@ public:
      * @n INA219_I2C_ADDRESS4  0x45   A0 = 1  A1 = 1
      */
     DFRobot_INA219_IIC(TwoWire *pWire, uint8_t i2caddr) : DFRobot_INA219() { _pWire = pWire; _addr = i2caddr; }
-
+    bool begin();
 protected:
     void    writeReg(uint8_t reg, uint8_t *pBuf, uint16_t len);
     void    readReg(uint8_t reg, uint8_t *pBuf, uint16_t len);
